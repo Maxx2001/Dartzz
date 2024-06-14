@@ -35,4 +35,9 @@ class Turn extends Model
     {
         return $this->belongsTo(Player::class);
     }
+
+    public function getScore(): int
+    {
+        return $this->throw_one + $this->throw_two + $this->throw_three;
+    }
 }

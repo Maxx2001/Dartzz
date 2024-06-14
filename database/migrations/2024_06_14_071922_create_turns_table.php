@@ -13,7 +13,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(Game::class);
             $table->foreignIdFor(Player::class);
-            $table->integer('throw_one');
+            $table->integer('throw_one')->nullable();
             $table->integer('throw_two')->nullable();
             $table->integer('throw_three')->nullable();
             $table->integer('remaining_points');

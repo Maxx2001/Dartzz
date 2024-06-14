@@ -42,13 +42,13 @@ const form = reactive({
 })
 
 const submit = () => {
-router.post(
-    route('game.store'),
-    form,
-    {
-        onStart: () => formIsSubmitting.value = true,
-        onFinish: () => formIsSubmitting.value = false,
-    }
-);
+    router.post(
+        route('game.store'),
+        form,
+        {
+            onStart: () => formIsSubmitting.value = true,
+            onFinish: () => formIsSubmitting.value = false,
+        }
+    );
 }
 </script>

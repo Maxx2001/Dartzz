@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -31,5 +33,17 @@ class Game extends Model
     public function playerTwo(): BelongsTo
     {
         return $this->belongsTo(Player::class, 'player_two_id');
+    }
+
+    public function scopeGetCurrent($uuid): Builder
+    {
+        $currentGame = Cache::get('game', $uuid);
+
+        return $this->where('uuid', $currentGame);
+    }
+
+    public function getCurrentTurn(): BelongsTo
+    {
+        return $this->belongsTo(Turn::class, 'current_turn');
     }
 }

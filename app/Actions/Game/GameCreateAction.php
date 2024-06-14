@@ -5,6 +5,7 @@ namespace App\Actions\Game;
 use App\Models\Game;
 use App\Models\Player;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Http\RedirectResponse;
 
 class GameCreateAction
 {
